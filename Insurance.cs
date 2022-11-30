@@ -417,6 +417,215 @@ public class Assignment04
             Assert.That(driver.FindElement(By.Id("age-error")).Text, Is.EqualTo("Age (>=16) is required"));
 
         }
+        public void tenthTest_4Accidents_NoInsurance()
+
+        {
+
+            //Arrange 
+
+            driver.Navigate().GoToUrl("http://localhost/prog8170a04/index.html");
+
+            driver.Manage().Window.Size = new System.Drawing.Size(1296, 688);
+
+            //Action 
+
+            driver.FindElement(By.CssSelector(".btn")).Click();
+
+            driver.FindElement(By.CssSelector(".card:nth-child(1) > div > .form-group:nth-child(1)")).Click();
+
+            driver.FindElement(By.Id("firstName")).Click();
+
+            driver.FindElement(By.Id("firstName")).SendKeys("jiya");
+
+            driver.FindElement(By.Id("lastName")).Click();
+
+            driver.FindElement(By.Id("lastName")).SendKeys("joy");
+
+            driver.FindElement(By.Id("address")).Click();
+
+            driver.FindElement(By.Id("address")).SendKeys("51 Nine Pines rd");
+
+            driver.FindElement(By.Id("city")).Click();
+
+            driver.FindElement(By.Id("city")).SendKeys("Kitchener");
+
+            driver.FindElement(By.Id("postalCode")).Click();
+
+            driver.FindElement(By.Id("postalCode")).SendKeys("N2E 1L3");
+
+            driver.FindElement(By.Id("phone")).Click();
+
+            driver.FindElement(By.Id("phone")).SendKeys("226-978-5186");
+
+            driver.FindElement(By.Id("email")).Click();
+
+            driver.FindElement(By.Id("email")).SendKeys("jiyajoy123@gmail.com");
+
+            driver.FindElement(By.Id("age")).Click();
+
+            driver.FindElement(By.Id("age")).SendKeys("30");
+
+            {
+
+                var element = driver.FindElement(By.Id("experience"));
+
+                Actions builder = new Actions(driver);
+
+                builder.MoveToElement(element).ClickAndHold().Perform();
+
+            }
+
+            {
+
+                var element = driver.FindElement(By.Id("experience"));
+
+                Actions builder = new Actions(driver);
+
+                builder.MoveToElement(element).Perform();
+
+            }
+
+            {
+
+                var element = driver.FindElement(By.Id("experience"));
+
+                Actions builder = new Actions(driver);
+
+                builder.MoveToElement(element).Release().Perform();
+
+            }
+
+            driver.FindElement(By.Id("experience")).Click();
+
+            driver.FindElement(By.Id("experience")).SendKeys("1");
+
+            driver.FindElement(By.Id("experience")).Click();
+
+            driver.FindElement(By.Id("accidents")).SendKeys("1");
+
+            driver.FindElement(By.Id("accidents")).Click();
+
+            driver.FindElement(By.Id("accidents")).SendKeys("2");
+
+            driver.FindElement(By.Id("accidents")).Click();
+
+            {
+
+                var element = driver.FindElement(By.Id("accidents"));
+
+                Actions builder = new Actions(driver);
+
+                builder.DoubleClick(element).Perform();
+
+            }
+
+            driver.FindElement(By.Id("accidents")).SendKeys("3");
+
+            driver.FindElement(By.Id("accidents")).Click();
+
+            driver.FindElement(By.Id("accidents")).SendKeys("4");
+
+            driver.FindElement(By.Id("accidents")).Click();
+
+            driver.FindElement(By.Id("finalQuote")).Click();
+
+            driver.FindElement(By.Id("finalQuote")).Click();
+
+            driver.FindElement(By.Id("btnSubmit")).Click();
+
+            driver.FindElement(By.Id("finalQuote")).Click();
+
+            //Assert 
+
+            {
+
+                string value = driver.FindElement(By.Id("finalQuote")).GetAttribute("value");
+
+                Assert.That(value, Is.EqualTo("No Insurance for you!!  Too many accidents - go take a course!"));
+
+            }
+
+            {
+
+                var element = driver.FindElement(By.Id("finalQuote"));
+
+                Actions builder = new Actions(driver);
+
+                builder.DoubleClick(element).Perform();
+
+            }
+
+        }
+
+        [Test]
+
+        public void eleventhTest_28Age_10Experience_1800BaseRate()
+
+        {
+
+            //Arrange 
+
+            driver.Navigate().GoToUrl("http://localhost/prog8170a04/index.html");
+
+            driver.Manage().Window.Size = new System.Drawing.Size(1296, 688);
+
+            //Action 
+
+            driver.FindElement(By.CssSelector(".btn")).Click();
+
+            driver.FindElement(By.Id("firstName")).Click();
+
+            driver.FindElement(By.Id("firstName")).SendKeys("jiya");
+
+            driver.FindElement(By.Id("lastName")).Click();
+
+            driver.FindElement(By.Id("lastName")).SendKeys("joy");
+
+            driver.FindElement(By.Id("address")).Click();
+
+            driver.FindElement(By.Id("address")).SendKeys("51 Nine Pines rd");
+
+            driver.FindElement(By.Id("city")).Click();
+
+            driver.FindElement(By.Id("city")).SendKeys("Kitchener");
+
+            driver.FindElement(By.Id("postalCode")).Click();
+
+            driver.FindElement(By.Id("postalCode")).SendKeys("N2E 1L3");
+
+            driver.FindElement(By.Id("phone")).Click();
+
+            driver.FindElement(By.Id("phone")).SendKeys("226-978-5186");
+
+            driver.FindElement(By.Id("email")).Click();
+
+            driver.FindElement(By.Id("email")).SendKeys("jiyajoy123@gmail.com");
+
+            driver.FindElement(By.Id("age")).Click();
+
+            driver.FindElement(By.Id("age")).SendKeys("28");
+
+            driver.FindElement(By.Id("experience")).Click();
+
+            driver.FindElement(By.Id("experience")).SendKeys("10");
+
+            driver.FindElement(By.Id("accidents")).Click();
+
+            driver.FindElement(By.Id("accidents")).SendKeys("0");
+
+            driver.FindElement(By.Id("btnSubmit")).Click();
+
+            //Assert 
+
+            {
+
+                string value = driver.FindElement(By.Id("finalQuote")).GetAttribute("value");
+
+                Assert.That(value, Is.EqualTo("$1800"));
+
+            }
+
+        }
     }
 
 }
