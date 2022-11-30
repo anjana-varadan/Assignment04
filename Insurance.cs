@@ -891,7 +891,46 @@ public class Assignment04
             }
         }
 
+        [Test]
+        public void fifteenthTest_omittedFirstname_FirstNameError()
+        {
+            //Arrange
+            driver.Navigate().GoToUrl("http://localhost/prog8170a04/index.html");
+            driver.Manage().Window.Size = new System.Drawing.Size(1280, 672);
+            //Action
+            driver.FindElement(By.CssSelector(".btn")).Click();
+            driver.FindElement(By.Id("lastName")).Click();
+            driver.FindElement(By.Id("lastName")).SendKeys("varadan");
+            driver.FindElement(By.Id("address")).Click();
+            driver.FindElement(By.Id("address")).SendKeys("210 nine pines");
+            driver.FindElement(By.Id("city")).Click();
+            driver.FindElement(By.Id("city")).SendKeys("Kitchener");
+            driver.FindElement(By.Id("postalCode")).Click();
+            driver.FindElement(By.Id("postalCode")).SendKeys("N2E 1L3");
+            driver.FindElement(By.Id("phone")).Click();
+            driver.FindElement(By.Id("phone")).SendKeys("226-978-5186");
+            driver.FindElement(By.Id("email")).Click();
+            driver.FindElement(By.Id("email")).SendKeys("anjana@gmail.com");
+            driver.FindElement(By.Id("age")).Click();
+            driver.FindElement(By.Id("age")).Click();
+            {
+                var element = driver.FindElement(By.Id("age"));
+                Actions builder = new Actions(driver);
+                builder.DoubleClick(element).Perform();
+            }
+            driver.FindElement(By.Id("age")).SendKeys("30");
+            driver.FindElement(By.Id("experience")).SendKeys("1");
+            driver.FindElement(By.Id("experience")).Click();
+            driver.FindElement(By.Id("accidents")).SendKeys("1");
+            driver.FindElement(By.Id("accidents")).Click();
+            driver.FindElement(By.Id("btnSubmit")).Click();
+            //Assert
+            Assert.That(driver.FindElement(By.Id("firstName-error")).Text, Is.EqualTo("First Name is required"));
 
+            driver.FindElement(By.CssSelector(".container")).Click();
+        }
     }
 
 }
+
+
